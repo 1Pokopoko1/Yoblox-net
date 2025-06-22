@@ -6,9 +6,7 @@
   <title>Yoblox - Bulletin de Mise à Jour</title>
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
   <style>
-    /* ===================================================================== */
-    /* RESET & BASE STYLES */
-    /* ===================================================================== */
+    /* Réinitialisation et styles globaux */
     * {
       margin: 0;
       padding: 0;
@@ -20,12 +18,12 @@
       color: #333;
       line-height: 1.6;
     }
-
-    /* ===================================================================== */
-    /* HEADER & NAVIGATION */
-    /* ===================================================================== */
+    
+    /* HEADER (Design épuré en blanc avec une subtile séparation) */
     header {
-      background: #FFD54F;
+      background: #ffffff;
+      border-bottom: 1px solid #e0e0e0;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
       padding: 20px;
       position: fixed;
       width: 100%;
@@ -37,12 +35,19 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
     }
-    header h1 {
-      font-size: 2rem;
-      color: #333;
+    .header-left, .header-center, .header-right {
+      flex: 1;
     }
+    .header-center {
+      text-align: center;
+    }
+    .header-right {
+      text-align: right;
+      position: relative;
+    }
+    
+    /* Liens de navigation et menu burger */
     header nav ul {
       list-style: none;
       display: flex;
@@ -54,24 +59,84 @@
       text-decoration: none;
       color: #333;
       font-weight: 600;
-      transition: color 0.3s ease;
+      transition: background 0.3s ease, color 0.3s ease;
+      padding: 8px 12px;
+      border-radius: 4px;
     }
     header nav ul li a:hover {
-      color: #F57C00;
+      background: #3498db;
+      color: #fff;
     }
-
-    /* ===================================================================== */
+    
+    /* Menu burger */
+    .burger-menu input {
+      display: none;
+    }
+    .burger-menu .menu-icon {
+      font-size: 26px;
+      cursor: pointer;
+      display: block;
+    }
+    .burger-menu nav.menu {
+      position: absolute;
+      top: 60px;
+      right: 0;
+      background: #ffffff;
+      width: 200px;
+      display: none;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 4px;
+    }
+    .burger-menu nav.menu ul {
+      list-style: none;
+      padding: 10px 0;
+      margin: 0;
+    }
+    .burger-menu nav.menu ul li a {
+      display: block;
+      padding: 10px 20px;
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+    .burger-menu nav.menu ul li a:hover {
+      background: #3498db;
+      color: #fff;
+    }
+    .burger-menu input:checked ~ nav.menu {
+      display: block;
+    }
+    @media (min-width: 768px) {
+      .burger-menu .menu-icon {
+        display: none;
+      }
+      .burger-menu nav.menu {
+        display: block;
+        position: static;
+        width: auto;
+        box-shadow: none;
+      }
+      .burger-menu nav.menu ul {
+        display: flex;
+        justify-content: flex-end;
+      }
+      .burger-menu nav.menu ul li a {
+        padding: 10px 15px;
+      }
+    }
+    
     /* HERO SECTION */
-    /* ===================================================================== */
     .hero {
       height: 100vh;
-      background: url('https://via.placeholder.com/1920x1080/FFECB3/333333?text=Yokai+Watch+Style') no-repeat center center/cover;
+      /* Nouvelle image en ton pastel bleu clair */
+      background: url('https://via.placeholder.com/1920x1080/ADD8E6/333333?text=Yoblox+Bulletin') no-repeat center center/cover;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding-top: 80px;
+      padding-top: 80px; /* Pour compenser le header fixe */
     }
     .hero h2 {
       font-size: 3.5rem;
@@ -88,44 +153,40 @@
       padding: 15px 30px;
       font-size: 1.2rem;
       border: none;
-      background: #F57C00;
+      background: #3498db;
       color: #fff;
       border-radius: 5px;
       cursor: pointer;
       transition: background 0.3s ease;
     }
     .hero button:hover {
-      background: #E64A19;
+      background: #2980b9;
     }
-
-    /* ===================================================================== */
+    
     /* MAIN CONTENT */
-    /* ===================================================================== */
     .content {
       padding: 100px 20px 50px;
       max-width: 1200px;
       margin: 0 auto;
     }
-
-    /* ===================================================================== */
+    
     /* SECTION : MISES À JOUR */
-    /* ===================================================================== */
     .updates {
       margin-bottom: 50px;
     }
     .updates h2 {
       font-size: 2.5rem;
       margin-bottom: 20px;
-      border-left: 5px solid #F57C00;
+      border-left: 5px solid #3498db;
       padding-left: 10px;
       color: #333;
     }
     .update-card {
-      background: #FFFDE7;
+      background: #f9f9f9;
       border-radius: 10px;
       padding: 20px;
       margin-bottom: 20px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
       transition: transform 0.3s ease;
       cursor: pointer;
     }
@@ -168,17 +229,15 @@
       height: auto;
       border-radius: 5px;
     }
-
-    /* ===================================================================== */
+    
     /* SECTION : CONTACT */
-    /* ===================================================================== */
     .contact-section {
       margin-bottom: 50px;
     }
     .contact-section h2 {
       font-size: 2.5rem;
       margin-bottom: 20px;
-      border-left: 5px solid #F57C00;
+      border-left: 5px solid #3498db;
       padding-left: 10px;
       color: #333;
     }
@@ -200,7 +259,7 @@
     }
     form button {
       padding: 15px 30px;
-      background: #F57C00;
+      background: #3498db;
       border: none;
       font-size: 1rem;
       border-radius: 5px;
@@ -209,30 +268,27 @@
       transition: background 0.3s ease;
     }
     form button:hover {
-      background: #E64A19;
+      background: #2980b9;
     }
-
-    /* ===================================================================== */
+    
     /* FOOTER */
-    /* ===================================================================== */
     footer {
-      background: #FFD54F;
+      background: #ffffff;
       padding: 40px 20px;
       text-align: center;
+      border-top: 1px solid #e0e0e0;
     }
     footer p {
       font-size: 1rem;
       color: #333;
     }
-
-    /* ===================================================================== */
-    /* BOUTON RETOUR EN HAUT */
-    /* ===================================================================== */
+    
+    /* Bouton Retour en Haut */
     #scrollTop {
       position: fixed;
       bottom: 30px;
       right: 30px;
-      background: #F57C00;
+      background: #3498db;
       color: #fff;
       width: 50px;
       height: 50px;
@@ -248,10 +304,8 @@
     #scrollTop:hover {
       opacity: 1;
     }
-
-    /* ===================================================================== */
-    /* ANIMATIONS & EFFETS */
-    /* ===================================================================== */
+    
+    /* Animation Fade In */
     .fade-in {
       opacity: 0;
       animation: fadeIn 2s forwards;
@@ -261,21 +315,8 @@
         opacity: 1;
       }
     }
-
-    /* ===================================================================== */
-    /* RESPONSIVE */
-    /* ===================================================================== */
+    
     @media(max-width: 768px) {
-      header .container {
-        flex-direction: column;
-      }
-      header nav ul {
-        flex-direction: column;
-        margin-top: 10px;
-      }
-      header nav ul li {
-        margin: 10px 0;
-      }
       .hero h2 {
         font-size: 3rem;
       }
@@ -284,38 +325,34 @@
         padding: 0 20px;
       }
     }
-
-    /* ===================================================================== */
-    /* FILLER POUR ALLONGER LE CODE - PREMIÈRE PARTIE (Lignes 1 à 50) */
-    /* ===================================================================== */
-    /* Filler Start */
-    
-    /* Filler End */
   </style>
 </head>
 <body>
   <!-- Bouton Retour en Haut -->
   <div id="scrollTop" title="Retour en haut">&#8679;</div>
-
-  <!-- ===================================================================== -->
-  <!-- HEADER / NAVIGATION -->
-  <!-- ===================================================================== -->
+  
+  <!-- HEADER -->
   <header>
     <div class="container">
-      <h1>Yoblox Bulletin</h1>
-      <nav>
-        <ul>
-          <li><a href="#accueil">Accueil</a></li>
-          <li><a href="#updates">Mises à jour</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
+      <div class="header-left"></div>
+      <div class="header-center">
+        <h1>Yoblox Bulletin</h1>
+      </div>
+      <div class="header-right burger-menu">
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle" class="menu-icon">&#9776;</label>
+        <nav class="menu">
+          <ul>
+            <li><a href="#accueil">Accueil</a></li>
+            <li><a href="#updates">Mises à jour</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
     </div>
   </header>
-
-  <!-- ===================================================================== -->
+  
   <!-- HERO SECTION -->
-  <!-- ===================================================================== -->
   <section class="hero" id="accueil">
     <h2 class="fade-in">Bienvenue sur Yoblox-info!</h2>
     <p class="fade-in" style="animation-delay: 0.5s;">
@@ -325,17 +362,12 @@
       Voir les mises à jour
     </button>
   </section>
-
-  <!-- ===================================================================== -->
+  
   <!-- MAIN CONTENT -->
-  <!-- ===================================================================== -->
   <main class="content">
-    <!-- ================================================================= -->
-    <!-- SECTION : MISES À JOUR -->
-    <!-- ================================================================= -->
     <section class="updates" id="updates">
       <h2 class="fade-in">Dernières Mises à Jour</h2>
-
+  
       <!-- Mise à jour 1 -->
       <div class="update-card fade-in">
         <div class="update-header">
@@ -344,10 +376,10 @@
         </div>
         <div class="update-content">
           <p>Notre première version est lancée avec des fonctionnalités de base 
-		  <br> certain ajoux apparaitront ici tel que la prochaine mise a Jour <br>
-		  âme disponible:<br>
-		  flamente<br>
-		  malmidal</p>
+            <br> certains ajoux apparaîtront ici tel que la prochaine mise à jour <br>
+            Âme disponible :<br>
+            flamente<br>
+            malmidal</p>
           <div class="update-details">
             <p>Détails : Ajout de nouveaux personnages, amélioration des interfaces et bien d’autres surprises à venir.</p>
           </div>
@@ -355,46 +387,39 @@
         <div class="update-image">
           <img src="./mais.png" alt="Image de la mise à jour Version 1.0">
         </div>
-		<div class="update-content">
+        <div class="update-content">
           <p>Notre première version est lancée avec des fonctionnalités de base 
-		  <br> la premiere parti de la map a été ajouté avec le nouveau quartier</p>
+            <br> la première partie de la map a été ajoutée avec le nouveau quartier</p>
         </div>
       </div>
-
-    <!-- ================================================================= -->
-    <!-- SECTION : CONTACT -->
-    <!-- ================================================================= -->
-    <section class="contact-section" id="contact">
-      <h2 class="fade-in">Contact &amp; Soumission de Contenu</h2>
-      <p class="fade-in">Pour toute suggestion ou contribution, n'hésitez pas à nous contacter via ce formulaire.</p>
-      <form class="fade-in" action="https://formsubmit.co/putimolu@gmail.com" method="POST" >
-        <div style="margin-bottom: 15px;">
-          <label for="name">Nom :</label><br>
-          <input type="text" id="name" name="name" placeholder="Votre nom">
-        </div>
-        <div style="margin-bottom: 15px;">
-          <label for="email">Email :</label><br>
-          <input type="email" id="email" name="email" placeholder="Votre email">
-        </div>
-        <div style="margin-bottom: 15px;">
-          <label for="message">Message :</label><br>
-          <textarea id="message" name="message" rows="5" placeholder="Votre message"></textarea>
-        </div>
-        <button type="submit">Envoyer</button>
-      </form>
+  
+      <!-- SECTION : CONTACT -->
+      <section class="contact-section" id="contact">
+        <h2 class="fade-in">Contact &amp; Soumission de Contenu</h2>
+        <p class="fade-in">Pour toute suggestion ou contribution, n'hésitez pas à nous contacter via ce formulaire.</p>
+        <form class="fade-in" action="https://formsubmit.co/putimolu@gmail.com" method="POST">
+          <div style="margin-bottom: 15px;">
+            <label for="name">Nom :</label><br>
+            <input type="text" id="name" name="name" placeholder="Votre nom">
+          </div>
+          <div style="margin-bottom: 15px;">
+            <label for="email">Email :</label><br>
+            <input type="email" id="email" name="email" placeholder="Votre email">
+          </div>
+          <div style="margin-bottom: 15px;">
+            <label for="message">Message :</label><br>
+            <textarea id="message" name="message" rows="5" placeholder="Votre message"></textarea>
+          </div>
+          <button type="submit">Envoyer</button>
+        </form>
+      </section>
     </section>
   </main>
-
-  <!-- ===================================================================== -->
-  <!-- FOOTER -->
-  <!-- ===================================================================== -->
+  
   <footer>
     <p>&copy; 2025 Yoblox. Tous droits réservés.</p>
   </footer>
-
-  <!-- ===================================================================== -->
-  <!-- SCRIPT JAVASCRIPT POUR INTERACTIONS & CONTENU DYNAMIQUE -->
-  <!-- ===================================================================== -->
+  
   <script>
     // Scroll fluide pour les liens de navigation
     document.querySelectorAll('header nav ul li a').forEach(anchor => {
@@ -404,350 +429,18 @@
         target.scrollIntoView({ behavior: 'smooth' });
       });
     });
-
+  
     // Bouton de retour en haut
     document.getElementById('scrollTop').addEventListener('click', function() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
-
+  
     // Affichage des détails sur clic pour chaque mise à jour
     document.querySelectorAll('.update-card').forEach(card => {
       card.addEventListener('click', function() {
         this.classList.toggle('active');
       });
     });
-
-    // Exemple de chargement dynamique des mises à jour via JavaScript
-    function loadDynamicUpdates() {
-      const updatesSection = document.getElementById('updates');
-      updatesData.forEach((update) => {
-        let updateCard = document.createElement('div');
-        updateCard.className = 'update-card fade-in';
-        updateCard.innerHTML = `
-          <div class="update-header">
-            <h3 class="update-title">${update.title}</h3>
-            <span class="update-date">${update.date}</span>
-          </div>
-          <div class="update-content">
-            <p>${update.content}</p>
-            <div class="update-details">
-              <p>${update.details}</p>
-            </div>
-          </div>
-          <div class="update-image">
-            <img src="${update.image}" alt="Image pour ${update.title}">
-          </div>
-        `;
-        updatesSection.appendChild(updateCard);
-      });
-    }
-    document.addEventListener('DOMContentLoaded', loadDynamicUpdates);
   </script>
-
-  <!-- ===================================================================== -->
-  <!-- FILLER POUR ALLONGER LE CODE - DE LIGNE 201 À 500 -->
-  <!-- ===================================================================== -->
-  <!-- Filler Start -->
-  <!-- 201 -->
-  <!-- 202 -->
-  <!-- 203 -->
-  <!-- 204 -->
-  <!-- 205 -->
-  <!-- 206 -->
-  <!-- 207 -->
-  <!-- 208 -->
-  <!-- 209 -->
-  <!-- 210 -->
-  <!-- 211 -->
-  <!-- 212 -->
-  <!-- 213 -->
-  <!-- 214 -->
-  <!-- 215 -->
-  <!-- 216 -->
-  <!-- 217 -->
-  <!-- 218 -->
-  <!-- 219 -->
-  <!-- 220 -->
-  <!-- 221 -->
-  <!-- 222 -->
-  <!-- 223 -->
-  <!-- 224 -->
-  <!-- 225 -->
-  <!-- 226 -->
-  <!-- 227 -->
-  <!-- 228 -->
-  <!-- 229 -->
-  <!-- 230 -->
-  <!-- 231 -->
-  <!-- 232 -->
-  <!-- 233 -->
-  <!-- 234 -->
-  <!-- 235 -->
-  <!-- 236 -->
-  <!-- 237 -->
-  <!-- 238 -->
-  <!-- 239 -->
-  <!-- 240 -->
-  <!-- 241 -->
-  <!-- 242 -->
-  <!-- 243 -->
-  <!-- 244 -->
-  <!-- 245 -->
-  <!-- 246 -->
-  <!-- 247 -->
-  <!-- 248 -->
-  <!-- 249 -->
-  <!-- 250 -->
-  <!-- 251 -->
-  <!-- 252 -->
-  <!-- 253 -->
-  <!-- 254 -->
-  <!-- 255 -->
-  <!-- 256 -->
-  <!-- 257 -->
-  <!-- 258 -->
-  <!-- 259 -->
-  <!-- 260 -->
-  <!-- 261 -->
-  <!-- 262 -->
-  <!-- 263 -->
-  <!-- 264 -->
-  <!-- 265 -->
-  <!-- 266 -->
-  <!-- 267 -->
-  <!-- 268 -->
-  <!-- 269 -->
-  <!-- 270 -->
-  <!-- 271 -->
-  <!-- 272 -->
-  <!-- 273 -->
-  <!-- 274 -->
-  <!-- 275 -->
-  <!-- 276 -->
-  <!-- 277 -->
-  <!-- 278 -->
-  <!-- 279 -->
-  <!-- 280 -->
-  <!-- 281 -->
-  <!-- 282 -->
-  <!-- 283 -->
-  <!-- 284 -->
-  <!-- 285 -->
-  <!-- 286 -->
-  <!-- 287 -->
-  <!-- 288 -->
-  <!-- 289 -->
-  <!-- 290 -->
-  <!-- 291 -->
-  <!-- 292 -->
-  <!-- 293 -->
-  <!-- 294 -->
-  <!-- 295 -->
-  <!-- 296 -->
-  <!-- 297 -->
-  <!-- 298 -->
-  <!-- 299 -->
-  <!-- 300 -->
-  <!-- 301 -->
-  <!-- 302 -->
-  <!-- 303 -->
-  <!-- 304 -->
-  <!-- 305 -->
-  <!-- 306 -->
-  <!-- 307 -->
-  <!-- 308 -->
-  <!-- 309 -->
-  <!-- 310 -->
-  <!-- 311 -->
-  <!-- 312 -->
-  <!-- 313 -->
-  <!-- 314 -->
-  <!-- 315 -->
-  <!-- 316 -->
-  <!-- 317 -->
-  <!-- 318 -->
-  <!-- 319 -->
-  <!-- 320 -->
-  <!-- 321 -->
-  <!-- 322 -->
-  <!-- 323 -->
-  <!-- 324 -->
-  <!-- 325 -->
-  <!-- 326 -->
-  <!-- 327 -->
-  <!-- 328 -->
-  <!-- 329 -->
-  <!-- 330 -->
-  <!-- 331 -->
-  <!-- 332 -->
-  <!-- 333 -->
-  <!-- 334 -->
-  <!-- 335 -->
-  <!-- 336 -->
-  <!-- 337 -->
-  <!-- 338 -->
-  <!-- 339 -->
-  <!-- 340 -->
-  <!-- 341 -->
-  <!-- 342 -->
-  <!-- 343 -->
-  <!-- 344 -->
-  <!-- 345 -->
-  <!-- 346 -->
-  <!-- 347 -->
-  <!-- 348 -->
-  <!-- 349 -->
-  <!-- 350 -->
-  <!-- 351 -->
-  <!-- 352 -->
-  <!-- 353 -->
-  <!-- 354 -->
-  <!-- 355 -->
-  <!-- 356 -->
-  <!-- 357 -->
-  <!-- 358 -->
-  <!-- 359 -->
-  <!-- 360 -->
-  <!-- 361 -->
-  <!-- 362 -->
-  <!-- 363 -->
-  <!-- 364 -->
-  <!-- 365 -->
-  <!-- 366 -->
-  <!-- 367 -->
-  <!-- 368 -->
-  <!-- 369 -->
-  <!-- 370 -->
-  <!-- 371 -->
-  <!-- 372 -->
-  <!-- 373 -->
-  <!-- 374 -->
-  <!-- 375 -->
-  <!-- 376 -->
-  <!-- 377 -->
-  <!-- 378 -->
-  <!-- 379 -->
-  <!-- 380 -->
-  <!-- 381 -->
-  <!-- 382 -->
-  <!-- 383 -->
-  <!-- 384 -->
-  <!-- 385 -->
-  <!-- 386 -->
-  <!-- 387 -->
-  <!-- 388 -->
-  <!-- 389 -->
-  <!-- 390 -->
-  <!-- 391 -->
-  <!-- 392 -->
-  <!-- 393 -->
-  <!-- 394 -->
-  <!-- 395 -->
-  <!-- 396 -->
-  <!-- 397 -->
-  <!-- 398 -->
-  <!-- 399 -->
-  <!-- 400 -->
-  <!-- 401 -->
-  <!-- 402 -->
-  <!-- 403 -->
-  <!-- 404 -->
-  <!-- 405 -->
-  <!-- 406 -->
-  <!-- 407 -->
-  <!-- 408 -->
-  <!-- 409 -->
-  <!-- 410 -->
-  <!-- 411 -->
-  <!-- 412 -->
-  <!-- 413 -->
-  <!-- 414 -->
-  <!-- 415 -->
-  <!-- 416 -->
-  <!-- 417 -->
-  <!-- 418 -->
-  <!-- 419 -->
-  <!-- 420 -->
-  <!-- 421 -->
-  <!-- 422 -->
-  <!-- 423 -->
-  <!-- 424 -->
-  <!-- 425 -->
-  <!-- 426 -->
-  <!-- 427 -->
-  <!-- 428 -->
-  <!-- 429 -->
-  <!-- 430 -->
-  <!-- 431 -->
-  <!-- 432 -->
-  <!-- 433 -->
-  <!-- 434 -->
-  <!-- 435 -->
-  <!-- 436 -->
-  <!-- 437 -->
-  <!-- 438 -->
-  <!-- 439 -->
-  <!-- 440 -->
-  <!-- 441 -->
-  <!-- 442 -->
-  <!-- 443 -->
-  <!-- 444 -->
-  <!-- 445 -->
-  <!-- 446 -->
-  <!-- 447 -->
-  <!-- 448 -->
-  <!-- 449 -->
-  <!-- 450 -->
-  <!-- 451 -->
-  <!-- 452 -->
-  <!-- 453 -->
-  <!-- 454 -->
-  <!-- 455 -->
-  <!-- 456 -->
-  <!-- 457 -->
-  <!-- 458 -->
-  <!-- 459 -->
-  <!-- 460 -->
-  <!-- 461 -->
-  <!-- 462 -->
-  <!-- 463 -->
-  <!-- 464 -->
-  <!-- 465 -->
-  <!-- 466 -->
-  <!-- 467 -->
-  <!-- 468 -->
-  <!-- 469 -->
-  <!-- 470 -->
-  <!-- 471 -->
-  <!-- 472 -->
-  <!-- 473 -->
-  <!-- 474 -->
-  <!-- 475 -->
-  <!-- 476 -->
-  <!-- 477 -->
-  <!-- 478 -->
-  <!-- 479 -->
-  <!-- 480 -->
-  <!-- 481 -->
-  <!-- 482 -->
-  <!-- 483 -->
-  <!-- 484 -->
-  <!-- 485 -->
-  <!-- 486 -->
-  <!-- 487 -->
-  <!-- 488 -->
-  <!-- 489 -->
-  <!-- 490 -->
-  <!-- 491 -->
-  <!-- 492 -->
-  <!-- 493 -->
-  <!-- 494 -->
-  <!-- 495 -->
-  <!-- 496 -->
-  <!-- 497 -->
-  <!-- 498 -->
-  <!-- 499 -->
-  <!-- 500 -->
-  <!-- Filler End -->
 </body>
 </html>
